@@ -1,0 +1,54 @@
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+    ul.navbar li {
+        display: inline-block;
+    }
+
+        ul.navbar li a {
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border-radius: 10px;
+    border: groove;
+    outline: ridge;
+    background-color: aquamarine;
+}
+
+.moving-bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url('./res/ico/wha.png');
+    background-repeat: repeat;
+    animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}

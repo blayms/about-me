@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Empty HTML File</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="moving-bg"></div>
+
+    <script src="mainScript.js"></script>
+
+    <ul class="navbar">
+        <li>
+            <a style="width: 50%; height: 50%; inline-size: auto;">
+                <h2 style="color:white">Toggle Music</h2>
+                <p style="color: red;">Music collected there is considered strange and some even have buzz words, so enable music only on your risk!</p>
+                <button id="toggleButton">Enable Music</button>
+
+                <audio id="audioPlayer" loop>
+                    <source id="audioSource" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </a>
+        </li>
+    </ul>
 
 </body>
 </html>
