@@ -28,6 +28,28 @@ body {
     padding: 0;
 }
 
+.filler {
+    position: absolute;
+    top: 5px;
+    bottom: 9px;
+    left: 9px;
+    background-color: rgba(0, 148, 255, 0.75);
+    border-radius: 10px;
+    box-shadow: 5px 5px 21px -3px aquamarine;
+    width: 99%;
+    height: 82%;
+}
+
+h2 {
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.noselect {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
 button {
     border-radius: 10px;
     border: groove;
@@ -35,12 +57,41 @@ button {
     background-color: aquamarine;
 }
 
+@keyframes bump {
+    0% {
+        inline-size: 30px;
+    }
+
+    50% {
+        inline-size: 0px;
+    }
+
+    100% {
+        inline-size: 30px;
+    }
+}
+
+.flag {
+    animation-name: bump;
+    animation-duration: 0.5s;
+}
+
 .moving-bg {
     width: 100%;
     height: 100vh;
-    background-image: url('./res/ico/wha.png');
     background-repeat: repeat;
     animation: moveBackground 20s linear infinite;
+    background-image: url('./res/ico/Blayms.png')
+}
+
+.flag:focus {
+    animation-name: bump;
+    animation-duration: 0.5s;
+}
+
+.flag:active {
+    -webkit-animation: none;
+    animation: none;
 }
 
 @keyframes moveBackground {
