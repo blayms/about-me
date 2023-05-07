@@ -2,18 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audioPlayer');
     const audioSource = document.getElementById('audioSource');
     audioPlayer.volume = 0.5;
-    let played = false
-
-    // Array of audio sources (URLs of your audio files)
-    const audioSources = [
-        'AssFart_NightTheme',
-        'deenatema',
-        'HeavyMEH',
-        "LuvVperde",
-        "thisisajoke",
-        "trillbaldi"
-        // Add more song URLs as needed
-    ];
+    let played = false;
 
     function selectRandomSong() {
         var randomSongID = globalInstance.audios[globalInstance.RandomInt(0, globalInstance.audios.length)];
@@ -45,57 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
         ruFlag.classList.remove('flag');
         ruFlag.classList.add('flag');
         globalInstance.flagClicks++;
-        if (globalInstance.flagClicks == 50) {
-            alert("Stop clicking on this Russian flag please!");
-        }
 
-        if (globalInstance.flagClicks == 100) {
-            alert("No, seriously. What do you expect?!");
-        }
-
-        if (globalInstance.flagClicks == 125) {
-            alert("SUKA BLYAT");
-        }
-
-        if (globalInstance.flagClicks == 150) {
-            alert("Are you angry?");
-        }
-
-        if (globalInstance.flagClicks == 200) {
-            alert("Looks like you are really angry! You clicked 200 times on flag with 3 colors");
-        }
-
-        if (globalInstance.flagClicks == 250) {
-            alert("So, what do you actually want?");
-        }
-
-        if (globalInstance.flagClicks == 300) {
-            alert("Oh, I got you!");
-        }
-
-        if (globalInstance.flagClicks == 350) {
-            alert("wait for it...");
-        }
-
-        if (globalInstance.flagClicks == 400) {
-            alert(".");
-        }
-
-        if (globalInstance.flagClicks == 450) {
-            alert("..");
-        }
-
-        if (globalInstance.flagClicks == 500) {
-            alert("...");
-        }
-
-        if (globalInstance.flagClicks == 600) {
-            alert("Okay, I DO NOT SUPPORT RUSSO-UKRAINIAN CONFLICT. CHILL OUT, MAN!");
-        }
-
-        if (globalInstance.flagClicks == 1000) {
-            alert("Nothing else there... I'm about to reset the click count!");
-            globalInstance.flagClicks = 0;
+        if (globalInstance.easterMsgs[globalInstance.flagClicks]) {
+            alert(globalInstance.easterMsgs[globalInstance.flagClicks]);
         }
 
     });
