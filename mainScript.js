@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const audioPlayer = document.getElementById('audioPlayer');
     const audioSource = document.getElementById('audioSource');
-    audioPlayer.volume = 0.5;
+    audioPlayer.volume = 0.25;
     let played = false;
 
     function selectRandomSong() {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedBG = globalInstance.bg[0];
     }
 
-    document.getElementById('movingBG').style.backgroundImage = "url('./res/ico/" + selectedBG + ".png')";
+    document.getElementById('movingBG').style.backgroundImage = "url('./res/bgs/" + selectedBG + ".png')";
 
     const toggleButton = document.getElementById('toggleButton');
 
@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var date2 = new Date((new Date().getFullYear()) + 1, 0, 17);
         const diffDays = Math.ceil(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
         document.getElementById("bdayDaysLeft").innerText = diffDays.toString();
+        if (diffDays == 0)
+        {
+            document.getElementById("bdayDaysLeft").classList.add('bdayButton');
+            document.getElementById("bdayDaysLeft").addEventListener('click', () => {
+                window.location.href = "bday.html";
+            });
+        }
         setTimeout(updateBdayCounter, (60 - new Date().getSeconds()) * 1000);
     }
 

@@ -49,6 +49,53 @@ h2 {
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
 }
+.bdayButton {
+    animation: spin both 1s;
+    display: inline-block;
+    animation-iteration-count: infinite;
+}
+.subyBdayText {
+    animation: subyBdayTextAnimation 5s;
+    pointer-events: none;
+    animation-iteration-count: infinite;
+}
+@keyframes subyBdayTextAnimation {
+    0% {
+        font-size: 100%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        font-size: 0%;
+    }
+
+    100% {
+        font-size: 100%;
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        font-size: 100%;
+        transform: rotate(0deg);
+        outline: 8px dotted rgb(255 0 0);
+        background: rgba(255 0 0);
+        border-radius: 1rem;
+    }
+    50% {
+        font-size: 125%;
+        outline: 0px groove rgb(255 0 0);
+        background: transparent;
+        border-radius: 1rem;
+    }
+    100% {
+        font-size: 100%;
+        transform: rotate(360deg);
+        background: rgba(255 0 0);
+        outline: 8px dotted rgb(255 0 0);
+        border-radius: 1rem;
+    }
+}
 
 button {
     border-radius: 10px;
@@ -75,13 +122,33 @@ button {
     animation-name: bump;
     animation-duration: 0.5s;
 }
+.curtainLift {
+    animation-name: liftY;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes liftY {
+    from {
+        bottom: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+
+
+    to {
+        bottom: 2000px;
+        -webkit-animation-timing-function: ease-out;
+    }
+
+}
 
 .moving-bg {
     width: 100%;
     height: 100vh;
     background-repeat: repeat;
     animation: moveBackground 20s linear infinite;
-    background-image: url('./res/ico/Blayms.png')
+    background-image: url('./res/bgs/Blayms.png');
+    position: absolute;
 }
 
 .flag:focus {

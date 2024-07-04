@@ -3,19 +3,21 @@ class GlobalClass {
 
     constructor() {
         this.audios = [
-            'AssFart_NightTheme',
-            'deenatema',
-            'HeavyMEH',
-            "LuvVperde",
-            "thisisajoke",
-            "trillbaldi"
+            '0',
+            '1',
+            '2',
+            '3',
+            "4",
+            "5",
+            "6"
         ];
 
         this.bg = [
             'Blayms',
             'Baldi',
             'strangebaldi',
-            'waterornot'
+            'waterornot',
+            'pompexe'
         ];
 
         this.easterIndex = 0;
