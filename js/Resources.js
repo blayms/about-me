@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { TextureLoader } from './Loaders/TextureLoader.js';
-import { MeshLoader } from './Loaders/MeshLoader.js';
-import { AudioWaveLoader } from './Loaders/AudioWaveLoader.js';
+import { TextureLoader } from './loaders/TextureLoader.js';
+import { MeshLoader } from './loaders/MeshLoader.js';
+import { AudioWaveLoader } from './loaders/AudioWaveLoader.js';
 
 /**
  * Resource manager class to load and access "res" folder.
