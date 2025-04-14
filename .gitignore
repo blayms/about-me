@@ -2,49 +2,50 @@
 *.bat
 
 # === OS & Editor Junk ===
-.DS_Store             # macOS folder attributes
-Thumbs.db             # Windows thumbnail cache
-*.swp                 # Vim swap files
-._*                   # macOS temporary files
-.idea/                # JetBrains IDE (WebStorm, PHPStorm)
-.vscode/              # VS Code settings (except extensions)
-*.suo                 # Visual Studio user options
+.DS_Store
+Thumbs.db
+*.swp
+._*
+.idea/
+.vscode/
+.vs/
+*.suo
 
 # === Dependency Folders ===
-/node_modules/        # Node.js dependencies
-/bower_components/    # Bower components
-/vendor/              # Composer (PHP) dependencies
-/.sass-cache/         # Sass cache
-/.bundle/             # Ruby Bundler
+/node_modules/
+/bower_components/
+/vendor/
+/.sass-cache/
+/.bundle/
 
 # === Build & Logs ===
-/dist/                # Production builds
-/build/               # Temporary build files
-*.log                 # Log files
+/dist/
+/build/
+*.log
 npm-debug.log*        
 yarn-debug.log*
 yarn-error.log*
 
 # === Environment Files ===
-.env                  # Sensitive credentials
+.env
 .env.local            
 .env.development
 .env.production
 .env.test
 
 # === System Files ===
-*.bak                 # Backup files
-*.tmp                 # Temporary files
-*.pid                 # Process IDs
-*.seed                # Database seeds
+*.bak
+*.tmp 
+*.pid
+*.seed
 *.pid.lock
 
 # === Website Specific ===
-/.cache/              # Static site generators (Hugo, Gatsby)
-/.jekyll-cache/       # Jekyll cache
-/.next/               # Next.js build
-/out/                 # Next.js/SvelteKit export
-/public/storage       # Laravel public storage symlink
+/.cache/
+/.jekyll-cache/
+/.next/
+/out/
+/public/storage
 
 # === Optional (Uncomment if needed) ===
 # /.htaccess           # Apache config (if not versioned)
