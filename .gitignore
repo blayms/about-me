@@ -1,3 +1,6 @@
+#Ignores 3D page (for developing purposes it's not even finished yet!)
+/3d.html
+
 # Ignore all .bat files
 *.bat
 

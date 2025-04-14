@@ -792,7 +792,30 @@
             audioElement.currentTime = 0;
             audioElement.play();
         }
-
+        let show3DWarn = true;
+        function Throw3DNotAvailableWarning()
+        {
+            if (show3DWarn)
+            {
+                show3DWarn = false;
+                DebugLabel.CreateTimed(
+                    "3d404warn",
+                    "🚧 The 3D Edition of the website is in development right now! 🚧",
+                    2000,
+                    {
+                        transition: "opacity 0.5s ease, transform 0.5s ease",
+                        background: "#33333380",
+                        color: "#ff0000",
+                        scale: "3"
+                    },
+                    document,
+                    () =>
+                    {
+                        show3DWarn = true;
+                    }
+                );
+            }
+        }
 
         updateBirthdayCountdown();
         setSyncInterval(updateBirthdayCountdown);
@@ -816,10 +839,30 @@
             addBounceAnimation(tryBtn);
             sound_uiclick.currentTime = 0;
             sound_uiclick.play();
-            setTimeout(() =>
+
+            setTimeout(async () =>
             {
-                window.location.href = "3d.html";
+                try
+                {
+                    const response = await fetch('3d1.html', { method: 'HEAD' });
+
+                    if (response.ok)
+                    {
+                        window.location.href = "3d.html";
+                    } else
+                    {
+                        Throw3DNotAvailableWarning();
+                    }
+                } catch (error)
+                {
+                    Throw3DNotAvailableWarning();
+                }
             }, 400);
+
+            //setTimeout(() =>
+            //{
+            //    window.location.href = "3d.html";
+            //}, 400);
         });
         window.visitUrlNeat = function (link, id = null)
         {
