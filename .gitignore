@@ -49,8 +49,3 @@ yarn-error.log*
 /.next/
 /out/
 /public/storage
-
-# === Optional (Uncomment if needed) ===
-# /.htaccess           # Apache config (if not versioned)
-# /error_log           # PHP error logs
-# /.phpunit.result.cache
