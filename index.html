@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Blayms | Main</title>
+    <link rel="shortcut icon" type="image/png" href="res/ico/blayms.ico" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 76, 126, 0.555);
+            /* same color, now with 7% opacity */
+            pointer-events: none;
+            z-index: -1;
+        }
+
+
+        body {
+            font-family: sans-serif;
+            background: #222;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-repeat: repeat;
+            background-size: 256px 256px;
+            animation: scroll-diagonal 10s linear infinite;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            background: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            flex-wrap: wrap;
+            font-weight: bold;
+            border-bottom: 2px solid #666;
+        }
+
+        @keyframes scroll-diagonal {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 256px 256px;
+            }
+        }
+
+        header .left,
+        header .right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        header .logo {
+            background-image: url("res-index/blayms_full.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: black;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        header .logo.hat::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-image: url("res-index/bdayhat.png");
+            /* your bday hat image path */
+            background-size: contain;
+            background-repeat: no-repeat;
+            top: 3px;
+            left: 45px;
+            transform: rotate(-15deg);
+            /* center + tilt */
+            pointer-events: none;
+        }
+
+        header .right span,
+        header .left span {
+            font-size: 1.4rem;
+        }
+
+        .music-button,
+        .try-button {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .music-button {
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .try-button {
+            font-size: 1.5rem;
+        }
+
+        .music-button:hover,
+        .try-button:hover {
+            transform: scale(1.25);
+        }
+
+        .separator {
+            width: 2px;
+            height: 24px;
+            background: #888;
+            margin: 0 0.5rem;
+        }
+
+        main {
+            font-family: "Comic Sans MS", sans-serif;
+            text-align: center;
+            padding: 2rem;
+            flex: 1;
+            width: 100%;
+            text-shadow: 6px 6px 6px rgba(0, 0, 0, 1);
+        }
+
+        main h1 {
+            font-size: 3.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .icon {
+            display: inline-block;
+        }
+
+        .text-content {
+            font-family: "Comic Sans MS", sans-serif;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            line-height: 2.2;
+            text-align: center;
+            width: 80%;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 10px;
+        }
+
+        .socials {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+        }
+
+        .overlap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 2rem;
+            color: red;
+            transform: translate(10px, 0);
+            display: inline-block;
+        }
+
+        .socials {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-dot {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes stretchy-bouncy {
+            0% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(1.2, 0.8);
+            }
+
+            50% {
+                transform: scale(0.8, 1.2);
+            }
+
+            70% {
+                transform: scale(1.1, 0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #ruFlag {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .stretchy-bouncy {
+            animation: stretchy-bouncy 0.5s ease-in-out;
+        }
+
+        .social-dot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .nonepointer {
+            pointer-events: all;
+            -webkit-user-drag: none;
+        }
+
+
+        .social-dot:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .socials.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .toggle-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #444;
+            color: white;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes chaos {
+            0% {
+                transform: translateX(0) scale(1) rotate(0deg);
+                opacity: 1;
+                color: red;
+            }
+
+            10% {
+                transform: translateX(-20px) scale(1.2) rotate(-10deg);
+                opacity: 0.8;
+                color: blue;
+            }
+
+            20% {
+                transform: translateX(20px) scale(0.8) rotate(10deg);
+                opacity: 1;
+                color: green;
+            }
+
+            30% {
+                transform: translateX(-15px) scale(1.5) rotate(-15deg);
+                opacity: 0.7;
+                color: yellow;
+            }
+
+            40% {
+                transform: translateX(15px) scale(1.1) rotate(20deg);
+                opacity: 1;
+                color: pink;
+            }
+
+            50% {
+                transform: translateX(-10px) scale(0.9) rotate(-25deg);
+                opacity: 0.9;
+                color: purple;
+            }
+
+            60% {
+                transform: translateX(10px) scale(1.3) rotate(30deg);
+                opacity: 1;
+                color: orange;
+            }
+
+            70% {
+                transform: translateX(-5px) scale(1) rotate(-20deg);
+                opacity: 0.8;
+                color: brown;
+            }
+
+            80% {
+                transform: translateX(5px) scale(1.2) rotate(15deg);
+                opacity: 1;
+                color: teal;
+            }
+
+            90% {
+                transform: translateX(-5px) scale(1.5) rotate(-10deg);
+                opacity: 0.7;
+                color: gold;
+            }
+
+            100% {
+                transform: translateX(0) scale(1) rotate(0deg);
+                opacity: 1;
+                color: red;
+            }
+        }
+
+        .bdaynum {
+            cursor: pointer;
+            color: red;
+            display: inline-block;
+            animation: chaos 0.5s ease-in-out infinite;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .bounce {
+            animation: bounce 0.4s ease;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(1.3);
+            }
+
+            60% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes lineBounce {
+
+            0%,
+            100% {
+                line-height: 1.2;
+            }
+
+            50% {
+                line-height: 1.5;
+            }
+        }
+
+        @keyframes rainbowColor {
+            0% {
+                color: #ff4ec4;
+            }
+
+            20% {
+                color: #ffbc42;
+            }
+
+            40% {
+                color: #48e5c2;
+            }
+
+            60% {
+                color: #6c63ff;
+            }
+
+            80% {
+                color: #ff595e;
+            }
+
+            100% {
+                color: #ff4ec4;
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                text-shadow: 0 0 5px #c0c0c0, 0 0 10px rgb(179, 0, 179), 0 0 15px rgb(0, 153, 153);
+            }
+
+            50% {
+                text-shadow: 0 0 10px rgb(168, 168, 0), 0 0 20px rgb(139, 0, 139), 0 0 25px rgb(0, 153, 153);
+            }
+        }
+
+        .pingpong-text {
+            animation:
+                lineBounce 2s ease-in-out infinite,
+                rainbowColor 6s linear infinite,
+                sparkle 1.5s ease-in-out infinite;
+            font-weight: bold;
+            margin: 1rem auto;
+        }
+
+        .now-playing {
+            position: absolute;
+            top: 64px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: sans-serif;
+            font-size: 14px;
+            z-index: 99999;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            pointer-events: auto;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            opacity: 0.95;
+            transition: opacity 0.3s ease;
+        }
+
+
+
+        .now-playing a {
+            color: #aaf;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .now-playing {
+                transform: scale(0.9);
+                top: 100px;
+            }
+
+            #now-playing-desc {
+                top: 100px;
+            }
+
+            .text-content {
+                font-family: "Comic Sans MS", sans-serif;
+                font-size: 0.9rem;
+                margin-top: 1rem;
+                line-height: 1.6;
+                text-align: left;
+                width: 100%;
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 0 10px;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+        }
+    </style>
+</head>
+
+<body oncopy="return false">
+    <audio id="sound_uiclick" src="res/audios/uiclick.ogg" preload="auto"></audio>
+    <audio id="sound_somesoundfrommybaldimod" src="res/audios/somesoundfrommybaldimod.ogg" preload="auto"></audio>
+    <audio id="sound_partyblower" src="res/audios/partyblower.ogg" preload="auto"></audio>
+    <audio id="sound_Cloth" src="res/audios/Cloth.ogg" preload="auto"></audio>
+    <audio id="sound_uihover" src="res/audios/uihover.ogg" preload="auto"></audio>
+    <audio id="musicloop" loop></audio>
+
+    <header>
+        <div class="left">
+            <div class="logo"></div>
+            <span>About Blayms</span>
+            <span style="border-left: 1px solid #888; padding-left: 1rem;" id="current-year"></span>
+        </div>
+        <div class="right">
+            <span id="bdaymusicmsg" class="hidden">ENABLE MUSIC NOW ➔</span>
+            <span class="music-button playhoversound">
+                <span class="icon playhoversound">♫</span><span class="overlap playhoversound">✖</span>
+            </span>
+            <div id="try3dsep" class="separator"></div>
+            <span id="try3dbtn" class="try-button playhoversound">Try 3D!</span>
+        </div>
+    </header>
+
+    <main id="mainText">
+        <h1>Hello, World!</h1>
+        <div class="text-content">
+            I'm — <img src="res-index/blaymsico.ico" title="Blayms" height="30" class="nonepointer">! And I do a lot of
+            things
+            on this world wide web! My IRL name is Maxim and I'm <img src="res-index/yctpCheckMark.png" title="Verified"
+                height="30" class="nonepointer"> years old and
+            <div id="bday-txt"></div>
+
+            I'm from <img src="res-index/ru.png" title="Russian Federation" height="30" id="ruFlag"
+                class="nonepointer"><br>
+
+            Mostly known in Baldi's Basics community for making content on YouTube and also creating <img
+                src="res-index/mea.png" title="ModExtraAssets" height="30" class="nonepointer"><br><br>
+
+            I enjoy making music as well! I like to code a lot of weird things (like programs, tools, or even this
+            website haha)<br>
+            Also, I make games besides YouTube content!<br><br>
+
+            I like to play <img src="res-index/baldi_emoji.png" title="Baldi's Basics" height="30" class="nonepointer">,
+            <img src="res-index/mc_emoji.png" title="Minecraft" height="30" class="nonepointer"> in the most. Enjoy
+            playing some random/my
+            own games over time.<br>
+            And I don't know what else I can say anymore.<br>
+
+            My favorite color is <span style="color: #0005ff">Blue</span> and I have a pet cat!<br>
+        </div>
+    </main>
+
+
+    <div class="socials">
+        <div class="social-dot playhoversound" data-url="https://www.youtube.com/@Blayms">
+            <img src="res-index/youtube.png" alt="YouTube" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://www.twitch.tv/blayms">
+            <img src="res-index/twitch.png" alt="Twitch" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://x.com/blaymsoff">
+            <img src="res-index/twitter.png" alt="Twitter" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://gamebanana.com/members/1698140">
+            <img src="res-index/gamebanana.png" alt="GameBanana" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://feugravite.itch.io/">
+            <img src="res-index/itchio.png" alt="Itch.io" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://soundcloud.com/blaymsoff">
+            <img src="res-index/soundcloud.png" alt="Soundcloud" />
+        </div>
+        <div class="social-dot playhoversound" data-url="https://open.spotify.com/artist/6arFOFpmWAtFNjqvekseAm">
+            <img src="res-index/spotify.png" alt="Spotify" />
+        </div>
+    </div>
+
+    <div id="now-playing" class="now-playing hidden">
+        <span><b>Now playing:</b></span>
+        <span id="now-playing-track" class="track">Author - Title</span>
+        <br>
+        <span id="now-playing-desc" class="now-playing hidden" style="top: 35px;"></span>
+    </div>
+
+
+    <button class="toggle-btn playhoversound" id="toggleBtn">▼</button>
+    <script type="module" src="js/Random.js"></script>
+    <script type="module" src="js/DebugLabel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script type="module" id="main-script">
+
+        import { Randomizer } from '/js/Random.js';
+        import { DebugLabel } from '/js/DebugLabel.js';
+
+        /**
+     * @typedef {Object} SongInfo
+     * @property {string} author - The name of the song's author.
+     * @property {string} title - The title of the song.
+     * @property {string} description - The description of the song.
+     * @property {string|null} [possibleUrl=null] - Optional URL to the song, defaults to null.
+     */
+
+        const sound_uiclick = document.getElementById('sound_uiclick');
+        const sound_somesoundfrommybaldimod = document.getElementById('sound_somesoundfrommybaldimod');
+        const sound_partyblower = document.getElementById('sound_partyblower');
+        const sound_Cloth = document.getElementById('sound_Cloth');
+        const sound_uihover = document.getElementById('sound_uihover');
+        const musicloop = document.getElementById('musicloop');
+        sound_uihover.volume = 0.3;
+        sound_Cloth.volume = 0.2;
+        sound_uiclick.volume = 0.5;
+        sound_partyblower.volume = 0.7;
+        sound_somesoundfrommybaldimod.volume = 0.6;
+        musicloop.volume = 0.25;
+
+        const bdaymusicmsg = document.getElementById("bdaymusicmsg");
+        const nowPlayingPanel = document.getElementById("now-playing");
+        const nowPlayingTrack = document.getElementById("now-playing-track");
+        const nowPlayingDesc = document.getElementById("now-playing-desc");
+
+        PickBG(false);
+
+        function IsMobile()
+        {
+            if (navigator.userAgentData && typeof navigator.userAgentData.mobile !== "undefined")
+            {
+                return navigator.userAgentData.mobile;
+            }
+
+            return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        document.addEventListener('copy', (e) =>
+        {
+            e.preventDefault();
+        });
+        function addBounceAnimation(el)
+        {
+            el.classList.add('bounce');
+            setTimeout(() => el.classList.remove('bounce'), 400);
+        }
+        let birthdayChangesApplied = false;
+        function updateBirthdayCountdown()
+        {
+            const diffDays = DaysUntilBlaymsBirthday();
+
+            let countdownText = `My birthday is at January 17th (Exactly in ${diffDays} ${diffDays === 1 ? 'day' : 'days'}!)<br>`;
+
+            if (diffDays === 0)
+            {
+                countdownText = `My birthday is at January 17th (Exactly in <span class="bdaynum" id="birthday-number">0</span> days!)<br>`;
+                if (!birthdayChangesApplied)
+                {
+                    document.querySelector('.logo').classList.add('hat');
+                    if (bdaymusicmsg.classList.contains('hidden'))
+                    {
+                        bdaymusicmsg.classList.remove('hidden');
+                    }
+                    birthdayChangesApplied = true;
+                }
+            }
+
+            document.getElementById('bday-txt').innerHTML = countdownText;
+            let bdayMusWarnAllowed = true;
+            // Add click listener to the number 0
+            const birthdayNumber = document.getElementById('birthday-number');
+            if (birthdayNumber)
+            {
+                birthdayNumber.addEventListener('click', function (event)
+                {
+                    if (musicloop.currentTime > 0)
+                    {
+                        addBounceAnimation(birthdayNumber);
+                        sound_partyblower.currentTime = 0;
+                        sound_partyblower.play();
+
+                        const x = event.clientX / window.innerWidth;
+                        const y = event.clientY / window.innerHeight;
+                        let confettiCount = Randomizer.GetInt(100, 1000);
+                        let confettiSpread = Randomizer.GetInt(10, 360);
+                        confetti({
+                            particleCount: confettiCount,
+                            spread: confettiSpread,
+                            origin: { x, y }
+                        });
+                    }
+                    else
+                    {
+                        addBounceAnimation(document.querySelector('#bdaymusicmsg'));
+                        if (bdayMusWarnAllowed)
+                        {
+                            bdayMusWarnAllowed = false;
+                            DebugLabel.CreateTimed(
+                                "bdayMusWarning",
+                                "ENABLE THE MUSIC!!!!",
+                                2000,
+                                {
+                                    transition: "opacity 0.5s ease, transform 0.5s ease",
+                                    background: "#33333380",
+                                    color: "#ff0000",
+                                    scale: "3"
+                                },
+                                document,
+                                () =>
+                                {
+                                    bdayMusWarnAllowed = true;
+                                }
+                            );
+                        }
+                    }
+                });
+            }
+        }
+        function setSyncInterval(callback)
+        {
+            const now = new Date();
+            const delay = 60000 - now.getSeconds() * 1000 - now.getMilliseconds();
+            setTimeout(() =>
+            {
+                callback();
+                setInterval(callback, 60000);
+            }, delay);
+        }
+        function DaysUntilBlaymsBirthday()
+        {
+            const today = new Date();
+            const birthday = new Date(today.getFullYear(), 0, 17); // today.getFullYear(), 0, 17
+
+            if (today > birthday)
+            {
+                birthday.setFullYear(today.getFullYear() + 1);
+            }
+            return Math.ceil((birthday - today) / (1000 * 60 * 60 * 24));
+        }
+        function PickBG(needsBdayAnyway)
+        {
+            if (needsBdayAnyway)
+            {
+                document.body.style.backgroundImage = `url('res-index/bgbday.png')`;
+                return;
+            }
+            const selectedBackground = "res-index/bg" + Randomizer.GetInt(0, 14) + ".png";
+            document.body.style.backgroundImage = `url('${selectedBackground}')`;
+        }
+        let interactionWarningAllowed = true;
+        function playAudioSafe(audioElement)
+        {
+            if (sessionStorage.getItem("userInteracted") == "false")
+            {
+                if (interactionWarningAllowed)
+                {
+                    interactionWarningAllowed = false;
+                    DebugLabel.CreateTimed(
+                        "interactionWarning",
+                        "Please, interact with the page!",
+                        2000,
+                        {
+                            transition: "opacity 0.5s ease, transform 0.5s ease",
+                            background: "#33333380",
+                            color: "#ff000080",
+                            scale: "3"
+                        },
+                        document,
+                        () =>
+                        {
+                            interactionWarningAllowed = true;
+                        }
+                    );
+                }
+                return;
+            }
+            if (!audioElement) return;
+
+            audioElement.currentTime = 0;
+            audioElement.play();
+        }
+
+
+        updateBirthdayCountdown();
+        setSyncInterval(updateBirthdayCountdown);
+
+
+        document.querySelectorAll('.social-dot').forEach(dot =>
+        {
+            dot.addEventListener('click', () =>
+            {
+                const url = dot.getAttribute('data-url');
+                sound_uiclick.currentTime = 0;
+                sound_uiclick.play();
+                addBounceAnimation(dot);
+                window.open(url, '_blank');
+            });
+        });
+
+        const tryBtn = document.querySelector('.try-button');
+        tryBtn.addEventListener('click', () =>
+        {
+            addBounceAnimation(tryBtn);
+            sound_uiclick.currentTime = 0;
+            sound_uiclick.play();
+            setTimeout(() =>
+            {
+                window.location.href = "3d.html";
+            }, 400);
+        });
+        window.visitUrlNeat = function (link, id = null)
+        {
+            sound_uiclick.currentTime = 0;
+            sound_uiclick.play();
+            if (id == null)
+            {
+                addBounceAnimation(nowPlayingTrack);
+            }
+            else
+            {
+                addBounceAnimation(document.querySelector(`#${id}`));
+            }
+            setTimeout(() =>
+            {
+                window.open(link, '_blank').focus();
+            }, 400);
+        };
+
+        const musicBtn = document.querySelector('.music-button');
+        const overlapIcon = document.querySelector('.overlap');
+        overlapIcon.style.display = 'inline-block';
+        /** @type {SongInfo} */
+        const bdaySongInfo = {
+            author: "Patty & Mildred J. Hill", title: "Happy Birthday to You", description: "HAPPY BIRTHDAY TO ME! IT'S CRAZY!", possibleUrl: "https://en.wikipedia.org/wiki/Happy_Birthday_to_You"
+        };
+        /** @type {SongInfo[]} */
+        const songInfos = [
+            {
+                author: "x-acto", title: "final showdown (mix)", description: "I've wanted to use it for a canceled game trailer. Maybe I will bring this game back, who knows?!", possibleUrl: "https://soundcloud.com/keygen_music/x-acto-final-showdown-mix"
+            },
+            {
+                author: "Stan LePard", title: "Windows XP Installation Music", description: "It sounds cool!", possibleUrl: "https://archive.org/details/WindowsXPInstallationMusic"
+            },
+            {
+                author: "Yeat", title: "Lot Goin' On", description: "This is an instrumental version of one of his unreleased songs, sounds cool!", possibleUrl: null
+            },
+            {
+                author: "The Shitposters for the very 1st time in history", title: "Arbuzi", description: 'This is an instrumental version, made by <a id="brodadiLink" href="javascript:void(0);" onclick="window.visitUrlNeat(\'https://www.youtube.com/c/BroDadi\', \'brodadiLink\')">BroDadi</a>!', possibleUrl: "https://open.spotify.com/track/6RtAq2sRAuYMfPgYcFSsWF?si=8db82aac34bc4a61"
+            },
+            {
+                author: "Playboi Carti", title: "LIKE WEEZY", description: "This is an instrumental version! The best from I AM MUSIC ngl!", possibleUrl: "https://open.spotify.com/track/4zK082ykqJzJGzC64NXjp1?si=a590e41935cb4624"
+            },
+            {
+                author: "Koji Kondo", title: "Zelda's Lullaby", description: "", possibleUrl: "https://example.com/zelda"
+            }
+        ];
+
+        function updateNowPlayingPanel(songIndex, show)
+        {
+            if (!show)
+            {
+                if (!nowPlayingPanel.classList.contains("hidden"))
+                {
+                    nowPlayingPanel.classList.add("hidden");
+                }
+                if (!nowPlayingDesc.classList.contains("hidden"))
+                {
+                    nowPlayingDesc.classList.add("hidden");
+                }
+                return;
+            }
+            if (nowPlayingPanel.classList.contains("hidden"))
+            {
+                nowPlayingPanel.classList.remove("hidden");
+            }
+
+            const songInfo = DaysUntilBlaymsBirthday() == 0 ? bdaySongInfo : songInfos[songIndex];
+            nowPlayingTrack.innerText = "";
+            nowPlayingTrack.textContent = "";
+            nowPlayingDesc.innerHTML = "";
+            if (songInfo.description != undefined && songInfo.description != null && songInfo.description != "")
+            {
+                if (nowPlayingDesc.classList.contains("hidden"))
+                {
+                    nowPlayingDesc.classList.remove("hidden");
+                }
+                nowPlayingDesc.innerHTML = `<b>Description:</b> ${songInfo.description}`;
+            }
+            if (songInfo.possibleUrl)
+            {
+                nowPlayingTrack.innerHTML = `<a href="javascript:void(0);" onclick="window.visitUrlNeat('${songInfo.possibleUrl}')">${songInfo.author} - ${songInfo.title}</a>`;
+            }
+            else
+            {
+                nowPlayingTrack.textContent = `${songInfo.author} - ${songInfo.title}`;
+            }
+        }
+        musicBtn.addEventListener('click', () =>
+        {
+            addBounceAnimation(musicBtn);
+            sound_uiclick.currentTime = 0;
+            sound_uiclick.play();
+            const musicDisabled = (overlapIcon.style.display === 'none');
+            overlapIcon.style.display = musicDisabled ? 'inline-block' : 'none';
+            const bdayNow = DaysUntilBlaymsBirthday() == 0;
+            if (!musicDisabled)
+            {
+                musicloop.currentTime = 0;
+                if (bdayNow)
+                {
+                    document.querySelector('#mainText').classList.add('pingpong-text');
+                    if (!bdaymusicmsg.classList.contains('hidden'))
+                    {
+                        bdaymusicmsg.classList.add('hidden');
+                    }
+                    PickBG(true);
+                }
+                const songIndex = bdayNow ? 1701 : Randomizer.GetInt(0, 4);
+                musicloop.src = bdayNow ? "res/audios/bdaytheme.ogg" : "res/audios/randomSong" + songIndex + ".mp3";
+                musicloop.load();
+                musicloop.play();
+                updateNowPlayingPanel(songIndex, true);
+            }
+            else
+            {
+                musicloop.pause();
+                musicloop.currentTime = 0;
+                updateNowPlayingPanel(-1, false);
+                if (bdayNow)
+                {
+                    PickBG(false);
+                    document.querySelector('#mainText').classList.remove('pingpong-text');
+                    if (bdaymusicmsg.classList.contains('hidden'))
+                    {
+                        bdaymusicmsg.classList.remove('hidden');
+                    }
+                }
+            }
+        });
+        if (IsMobile())
+        {
+            document.getElementById('try3dsep').remove();
+            document.getElementById('try3dbtn').remove();
+        }
+        sessionStorage.setItem("userInteracted", "false");
+
+        function markUserInteracted()
+        {
+            sessionStorage.setItem("userInteracted", "true");
+
+            window.removeEventListener("click", markUserInteracted);
+            window.removeEventListener("keydown", markUserInteracted);
+            window.removeEventListener("pointerdown", markUserInteracted);
+            window.removeEventListener("touchstart", markUserInteracted);
+        }
+
+        window.addEventListener("click", markUserInteracted);
+        window.addEventListener("keydown", markUserInteracted);
+        window.addEventListener("pointerdown", markUserInteracted);
+        window.addEventListener("touchstart", markUserInteracted);
+        const buttons = document.querySelectorAll('button');
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const easterMsgs = {
+            50: "Stop clicking on this Russian flag please!",
+            100: "No, seriously. What do you expect?!",
+            125: "SUKA BLYAT",
+            150: "Are you angry?",
+            200: "Looks like you are really angry! You clicked 200 times on flag with 3 colors",
+            250: "So, what do you actually want?",
+            300: "Oh, I got you!",
+            350: "wait for it...",
+            375: ".",
+            400: "..",
+            425: "...",
+            450: "I was joking haha! Let's click more!",
+            500: "Sorry if your hand is already tired",
+            550: "Actually, there's nothing else there",
+            600: "And you are still trying to see?",
+            750: "STILL?",
+            775: "Alr, continue clicking and...",
+            800: "nothing will happen haha!",
+            825: "Are you serious?",
+            850: "My hero",
+            875: "💀",
+            900: "Are you happy?",
+            950: "So how is your day going?",
+            1000: "You are talking to nobody",
+            1050: "You are not uncovering some ARG",
+            1100: "It's a silly waste of time",
+            1125: "*THE END*",
+            1150: "I'm not responsable for your finger...",
+            1175: "deenatema",
+            1176: "voice dot ai",
+            1200: "Web developmment is fun!",
+            1225: "What if nobody is even clicking tho",
+            1250: "SOMEBODY, ARE DO YOU HEAR ME?",
+            1300: "How the hell clicking on a flag is even connected to all of that?",
+            1350: "Um, so you actually want to achive something? Alr, just click couple of times",
+            1360: ".",
+            1370: "..",
+            1380: "...",
+            1400: ":P",
+            1425: "Enough of trolling",
+            1450: "Seriously, stop the clicking man!",
+            1500: "Bro, what the hell do you need",
+            1550: "",
+            1560: "null",
+            1600: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            1601: "balls",
+            1650: "No, I don't even know what to say at this moment",
+            1660: "You are unstoppable...",
+            1670: "Fine.",
+            1680: ".",
+            1690: "..",
+            1700: "...",
+            1701: "HAHA",
+            1800: "Okay, you will get it. Fine, enough of trolling this time",
+            1801: ".",
+            1810: "..",
+            1811: "...",
+            1812: "..",
+            1814: ".",
+            1820: "...",
+            1821: "..",
+            1823: "...",
+            1824: ".",
+            1830: ",,,",
+            1840: ".",
+            1841: "..",
+            1842: "...",
+            2000: "Nothing else there...",
+            3000: "?",
+            5000: "Okay, I DO NOT SUPPORT RUSSO-UKRAINIAN CONFLICT. CHILL OUT, MAN!",
+        };
+        const toggleBtn = document.getElementById('toggleBtn');
+        const socials = document.querySelector('.socials');
+        let socialsVisible = true;
+
+        document.addEventListener('mouseover', (event) =>
+        {
+            if (event.target.classList.contains('playhoversound'))
+            {
+                playAudioSafe(sound_uihover);
+            }
+        });
+
+        toggleBtn.addEventListener('click', () =>
+        {
+            sound_uiclick.currentTime = 0;
+            sound_uiclick.play();
+            socialsVisible = !socialsVisible;
+            socials.classList.toggle('hidden', !socialsVisible);
+            toggleBtn.textContent = socialsVisible ? '▼' : '▲';
+            addBounceAnimation(toggleBtn);
+            addBounceAnimation(socials);
+        });
+
+        document.addEventListener('contextmenu', function (e)
+        {
+            e.preventDefault();
+        });
+
+        let allowFlagClicking = true;
+        let flagClickCount = 0;
+        document.getElementById('ruFlag').addEventListener('click', function ()
+        {
+            if (allowFlagClicking)
+            {
+                sound_Cloth.currentTime = 0;
+                sound_Cloth.play();
+                flagClickCount += 1;
+                if (flagClickCount in easterMsgs)
+                {
+                    allowFlagClicking = false;
+                    sound_somesoundfrommybaldimod.currentTime = 0;
+                    sound_somesoundfrommybaldimod.play();
+                    DebugLabel.CreateTimed(
+                        "flagMsg",
+                        easterMsgs[flagClickCount],
+                        2000,
+                        {
+                            transition: "opacity 1s ease, transform 1s ease",
+                            background: "#333",
+                            color: "#fff",
+                            scale: "3"
+                        },
+                        document,
+                        () =>
+                        {
+                            allowFlagClicking = true;
+                        }
+                    );
+                }
+
+                const flag = this;
+
+                flag.classList.remove('stretchy-bouncy');
+                flag.offsetHeight;
+                flag.classList.add('stretchy-bouncy');
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
